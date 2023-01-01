@@ -1,16 +1,8 @@
-<ul class="navbar-nav" *ngIf="isAuthenticated | async">
-    <li class="nav-item">
-        <a  class="nav-link text-dark" [routerLink]='["/authentication/profile"]' title="Manage">Hello {{ userName | async }}</a>
-    </li>
-    <li class="nav-item">
-        <a  class="nav-link text-dark" [routerLink]='["/authentication/logout"]' [state]='{ local: true }' title="Logout">Logout</a>
-    </li>
-</ul>
-<ul class="navbar-nav" *ngIf="(isAuthenticated | async) !== true">
-  <li class="nav-item">
-        <a class="nav-link text-dark" [routerLink]='["/authentication/register"]'>Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" [routerLink]='["/authentication/login"]'>Login</a>
-    </li>
-</ul>
+<div *ngIf="isAuthenticated | async">
+  <ion-button [routerLink]='["/authentication/profile"]' title="Manage">Hello {{ userName | async }}</ion-button>
+  <ion-button [routerLink]='["/authentication/logout"]' [state]='{ local: true }' title="Logout">Logout</ion-button>
+</div>
+<div *ngIf="(isAuthenticated | async) !== true">
+  <ion-button [routerLink]='["/authentication/register"]'>Register</ion-button>
+  <ion-button [routerLink]='["/authentication/login"]'>Login</ion-button>
+</div>

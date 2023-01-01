@@ -13,6 +13,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { IonicModule } from '@ionic/angular';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { IonicModule } from '@ionic/angular';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,6 +32,7 @@ import { IonicModule } from '@ionic/angular';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
+      { path: 'play', component: HomeComponent,  canActivate: [AuthorizeGuard] },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ]),
     IonicModule.forRoot()
